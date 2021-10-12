@@ -1,0 +1,22 @@
+{
+  "name": "dev.vigeo.core",
+  "version": "1.2.1",
+  "displayName": "Vigeo.Core",
+  "description": "[Core] module of Vigeo Games Unity3D Library.",
+  "category": "Unity Library",
+  "unity": "2019.1",
+  "author": {
+    "name": "Vigeo Games",
+    "url": "https://github.com/VigeoGames/VigeoUnity"
+  },
+  "bugs": {
+    "url": "https://github.com/VigeoGames/VigeoUnity/issues"
+  },
+  "keywords": [
+    "unity",
+    "game",
+    "library",
+    "extensions",
+    "utilities"
+  ]
+}
