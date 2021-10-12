@@ -1,6 +1,6 @@
 {
   "name": "dev.vigeo.unity",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "displayName": "Vigeo.Unity",
   "description": "[Unity] module of Vigeo Games Unity3D Library.",
   "category": "Unity Library",
@@ -13,7 +13,7 @@
     "url": "https://github.com/VigeoGames/VigeoUnity/issues"
   },
   "dependencies": {
-    "dev.vigeo.core": "1.1.0"
+    "dev.vigeo.core": "1.2.0"
   },
   "keywords": [
     "unity",
