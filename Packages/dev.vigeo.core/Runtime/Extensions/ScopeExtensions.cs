@@ -2,6 +2,8 @@ using System;
 
 namespace Vigeo {
     
+    public delegate void ActionRef<T>(ref T item);
+    
     /// <summary>
     /// A set of scope extension methods inspired by Kotlin's scope extensions.
     /// </summary>
@@ -177,9 +179,9 @@ namespace Vigeo {
         }
         
         // ReSharper disable once MethodOverloadWithOptionalParameter // we need [defaultValue] to prevent clash with class-constrained version of [Apply()]
-        public static T Apply<T>(this T @this, Action<T> block, T defaultValue = default) where T : struct {
-            block(@this);
-            return @this;
+        public static ref T Apply<T>(this ref T @this, ActionRef<T> block, T defaultValue = default) where T : struct {
+            block(ref @this);
+            return ref @this;
         }
         
         public static T? Apply<T>(this T? @this, Action<T> block) where T : struct {
