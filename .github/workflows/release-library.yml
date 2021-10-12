@@ -1,0 +1,23 @@
+name: Release VigeoUnity library
+
+#on:
+#  push:
+#    branches:
+#      - master
+
+# Manual release trigger
+on: workflow_dispatch
+
+jobs:
+  upm-release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: quabug/create-upm-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        # release version will be retrieved from Vigeo.Core package (assuming version is synced between packages)
+        upm_package_path: Packages/dev.vigeo.core
+        upm_tag_prefix: v
+        

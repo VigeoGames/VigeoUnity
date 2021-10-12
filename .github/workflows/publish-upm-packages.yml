@@ -1,0 +1,36 @@
+name: Publish all UPM packages
+
+#on:
+#  push:
+#    branches:
+#      - master
+
+# Manual release trigger
+on: workflow_dispatch
+
+jobs:
+  # Publish UPM release for Vigeo.Core package
+  upm-release-vigeo-core:
+    runs-on: ubuntu-latest
+    env: 
+      PKG_ROOT: dev.vigeo.core
+      PKG_BRANCH: upm-vigeo-core
+    steps:
+      - uses: actions/checkout@v2
+      - name: Split UPM branch for the package
+        run:
+          git subtree split -P "Packages/$PKG_ROOT" -b $PKG_BRANCH
+      - name: Get version of the package
+        id: version
+        uses: notiz-dev/github-action-json-property@release
+        with:
+          path: Packages/dev.vigeo.core/package.json
+          prop_path: "version"
+      - name: Create version tag on UPM branch for the package
+        run: |
+          PKG_VERSION="vigeo-core-v${{steps.version.outputs.prop}}"
+          git ls-remote --exit-code --tags origin $PKG_VERSION && echo "Same version already exists '$PKG_VERSION'" && exit 7
+          git tag $PKG_VERSION $PKG_BRANCH
+      - name: Push version and UPM branch for the package
+        run: git push origin $PKG_BRANCH --tags --force
+        
