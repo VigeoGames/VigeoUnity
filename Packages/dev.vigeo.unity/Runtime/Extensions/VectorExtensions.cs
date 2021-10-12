@@ -16,5 +16,11 @@ namespace Vigeo {
         public static Vector3 Set(this Vector3 @this, float? x = null, float? y = null, float? z = null) => @this.Apply(vector =>
             vector.Set(x ?? vector.x, y ?? vector.y, z ?? vector.z)
         );
+        
+        public static Vector2 XY(this Vector3 @this) =>
+            new Vector2(@this.x, @this.y);
+
+        public static Vector2 XZ(this Vector3 @this) =>
+            new Vector2(@this.x, @this.z);
     }
 }
