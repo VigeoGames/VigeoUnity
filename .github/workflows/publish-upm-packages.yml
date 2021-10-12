@@ -34,3 +34,27 @@ jobs:
       - name: Push version and UPM branch for the package
         run: git push origin $PKG_BRANCH --tags --force
         
+  # Publish UPM release for Vigeo.Unity package
+  upm-release-vigeo-unity:
+    runs-on: ubuntu-latest
+    env:
+      PKG_ROOT: dev.vigeo.unity
+      PKG_BRANCH: upm-vigeo-unity
+    steps:
+      - uses: actions/checkout@v2
+      - name: Split UPM branch for the package
+        run:
+          git subtree split -P "Packages/$PKG_ROOT" -b $PKG_BRANCH
+      - name: Get version of the package
+        id: version
+        uses: notiz-dev/github-action-json-property@release
+        with:
+          path: Packages/dev.vigeo.unity/package.json
+          prop_path: "version"
+      - name: Create version tag on UPM branch for the package
+        run: |
+          PKG_VERSION="vigeo-unity-v${{steps.version.outputs.prop}}"
+          git ls-remote --exit-code --tags origin $PKG_VERSION && echo "Same version already exists '$PKG_VERSION'" && exit 7
+          git tag $PKG_VERSION $PKG_BRANCH
+      - name: Push version and UPM branch for the package
+        run: git push origin $PKG_BRANCH --tags --force

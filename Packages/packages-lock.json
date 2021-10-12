@@ -6,6 +6,12 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "dev.vigeo.unity": {
+      "version": "file:dev.vigeo.unity",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.ext.nunit": {
       "version": "1.0.6",
       "depth": 1,
