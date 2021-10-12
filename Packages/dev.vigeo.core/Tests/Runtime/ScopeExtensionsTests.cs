@@ -95,6 +95,29 @@ namespace Vigeo {
             });
             Assert.IsNull(_8, "Calling [Also()] for result on null value type should not change result type.");
         }
+        
+        [Test]
+        public void Apply_Scope_Extension_Tests() {
+            // Calling [Apply()] on reference types
+            var _1 = new string[1].Apply(@this => {
+                @this[0] = "";
+            });
+            Assert.AreEqual(_1[0], "");
+    
+            var _2 = new string[1].Apply(@this => {
+                @this[0] = "";
+                return true;
+            });
+            Assert.AreEqual(_2[0], "");
+    
+            // Chaining [Apply()] calls
+            var _3 = new string[2].Apply(@this => {
+                @this[0] = "";
+                @this[1] = "";
+            });
+            Assert.AreEqual(_3[0], "");
+            Assert.AreEqual(_3[1], "");
+        }
 
         [Test]
         public void Run_Scope_Extension_Tests() {

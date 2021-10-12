@@ -157,6 +157,72 @@ namespace Vigeo {
         
 #endregion
 
+#region [Apply()] scope extension method (various versions)
+
+        /// <summary>
+        /// Returns [@this] after applying a [block] of changes to it.
+        /// </summary>
+        /// <remarks>
+        /// This version supports types constrained as reference types (i.e. classes, arrays or
+        /// delegates) and accepts a [block] that accepts parameter of type [T]. The [block] will
+        /// not be called if [@this] is null but if it does, it's guaranteed to receive a non-null
+        /// [@this].
+        /// </remarks>
+        public static T Apply<T>(this T @this, Action<T> block) where T : class {
+            if (@this == null) {
+                return null;
+            }
+            block(@this);
+            return @this;
+        }
+        
+        // ReSharper disable once MethodOverloadWithOptionalParameter // we need [defaultValue] to prevent clash with class-constrained version of [Apply()]
+        public static T Apply<T>(this T @this, Action<T> block, T defaultValue = default) where T : struct {
+            block(@this);
+            return @this;
+        }
+        
+        public static T? Apply<T>(this T? @this, Action<T> block) where T : struct {
+            if (@this == null) {
+                return null;
+            }
+            block((T) @this);
+            return @this;
+        }
+        
+        /// <summary>
+        /// Returns [@this] after applying a [block] of changes to it.
+        /// </summary>
+        /// <remarks>
+        /// This version supports types constrained as reference types (i.e. classes, arrays or
+        /// delegates) and accepts [block] that accepts parameter of type [T] and returns type [R].
+        /// The [block] will not be called if [@this] is null but if it does, it's guaranteed to
+        /// receive a non-null [@this].
+        /// </remarks>
+        public static T Apply<T, R>(this T @this, Func<T, R> block) where T : class {
+            if (@this == null) {
+                return null;
+            }
+            block(@this);
+            return @this;
+        }
+        
+        // ReSharper disable once MethodOverloadWithOptionalParameter // we need [defaultValue] to prevent clash with class-constrained version of [Apply()]
+        public static T Apply<T, R>(this T @this, Func<T, R> block, T defaultValue = default) where T : struct {
+            block(@this);
+            return @this;
+        }
+        
+        public static T? Apply<T, R>(this T? @this, Func<T, R> block) where T : struct {
+            if (@this == null) {
+                return null;
+            }
+            block((T) @this);
+            return @this;
+        }
+
+#endregion
+
 #region [Run()] scope extension method (various versions)
 
         /// <summary>
