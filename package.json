@@ -1,0 +1,25 @@
+{
+  "name": "dev.vigeo.unity",
+  "version": "1.3.0",
+  "displayName": "Vigeo.Unity",
+  "description": "[Unity] module of VIGΞO GΛMΞS Unity3D Library.",
+  "category": "Unity Library",
+  "unity": "2019.1",
+  "author": {
+    "name": "VIGΞO GΛMΞS",
+    "url": "https://github.com/VigeoGames/VigeoUnity"
+  },
+  "bugs": {
+    "url": "https://github.com/VigeoGames/VigeoUnity/issues"
+  },
+  "dependencies": {
+    "dev.vigeo.core": "1.3.0"
+  },
+  "keywords": [
+    "unity",
+    "game",
+    "library",
+    "extensions",
+    "utilities"
+  ]
+}
