@@ -8,8 +8,12 @@ name: Publish all UPM packages
 # Manual release trigger
 on: workflow_dispatch
 
+env:
+  LIBRARY_ROOT: Assets/Plugins/Vigeo
+
 jobs:
-  # Publish UPM release for Vigeo.Core package
+
+  # Publish UPM release for [dev.vigeo.core] package
   upm-release-vigeo-core:
     runs-on: ubuntu-latest
     env: 
@@ -19,12 +23,12 @@ jobs:
       - uses: actions/checkout@v2
       - name: Split UPM branch for the package
         run:
-          git subtree split -P "Packages/$PKG_ROOT" -b $PKG_BRANCH
+          git subtree split -P "${{env.LIBRARY_ROOT}}/${{env.PKG_ROOT}}" -b $PKG_BRANCH
       - name: Get version of the package
         id: version
         uses: notiz-dev/github-action-json-property@release
         with:
-          path: Packages/dev.vigeo.core/package.json
+          path: ${{env.LIBRARY_ROOT}}/${{env.PKG_ROOT}}/package.json
           prop_path: "version"
       - name: Create version tag on UPM branch for the package
         run: |
@@ -34,7 +38,7 @@ jobs:
       - name: Push version and UPM branch for the package
         run: git push origin $PKG_BRANCH --tags --force
         
-  # Publish UPM release for Vigeo.Unity package
+  # Publish UPM release for [dev.vigeo.unity] package
   upm-release-vigeo-unity:
     runs-on: ubuntu-latest
     env:
@@ -44,12 +48,12 @@ jobs:
       - uses: actions/checkout@v2
       - name: Split UPM branch for the package
         run:
-          git subtree split -P "Packages/$PKG_ROOT" -b $PKG_BRANCH
+          git subtree split -P "${{env.LIBRARY_ROOT}}/${{env.PKG_ROOT}}" -b $PKG_BRANCH
       - name: Get version of the package
         id: version
         uses: notiz-dev/github-action-json-property@release
         with:
-          path: Packages/dev.vigeo.unity/package.json
+          path: ${{env.LIBRARY_ROOT}}/${{env.PKG_ROOT}}/package.json
           prop_path: "version"
       - name: Create version tag on UPM branch for the package
         run: |
