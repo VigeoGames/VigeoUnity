@@ -1,8 +1,8 @@
 {
-    "name": "Vigeo.Core.Tests",
+    "name": "dev.vigeo.unity.tests",
     "rootNamespace": "Vigeo",
     "references": [
-        "Vigeo.Core",
+        "dev.vigeo.unity",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner"
     ],

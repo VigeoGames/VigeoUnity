@@ -1,8 +1,8 @@
 {
-    "name": "Vigeo.Unity",
+    "name": "dev.vigeo.unity",
     "rootNamespace": "Vigeo",
     "references": [
-        "Vigeo.Core"
+        "dev.vigeo.core"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,5 +1,5 @@
 {
-    "name": "Vigeo.Core",
+    "name": "dev.vigeo.core",
     "rootNamespace": "Vigeo",
     "references": [],
     "includePlatforms": [],
