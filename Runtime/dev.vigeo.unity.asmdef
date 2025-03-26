@@ -1,0 +1,16 @@
+{
+    "name": "dev.vigeo.unity",
+    "rootNamespace": "Vigeo",
+    "references": [
+        "dev.vigeo.core"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
