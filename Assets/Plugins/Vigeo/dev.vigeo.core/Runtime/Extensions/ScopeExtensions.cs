@@ -51,6 +51,7 @@ namespace Vigeo {
         /// <summary>
         /// Returns [@this] but also calls provided [block] giving it access to [@this].
         /// </summary>
+        /// <remarks>
         /// This version supports types constrained as nullable value types (i.e. structs, enums or
         /// primitives) and accepts a parameterless [block]. The [block] will not be called if [@this]
         /// is null but if it does, it's guaranteed to receive a non-null [@this].
